@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <script src="libs/echarts.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <title>
+        E Charts Tree Map
+    </title>
+</head>
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+<script type="text/javascript">
+
+    let d =[
+        {"parentColumn": "",  "childColumn":"A"},
+        {"parentColumn": "A", "childColumn":"B"},
+        {"parentColumn": "A", "childColumn":"C"},
+        {"parentColumn": "B", "childColumn":"D","val":30},
+        {"parentColumn": "B", "childColumn":"E","val":50},
+        {"parentColumn": "C", "childColumn":"F","val":20},
+        {"parentColumn": "C", "childColumn":"G","val":40},
+        {"parentColumn": "C", "childColumn":"H","val":60}
+    ].then( function (d) {
+
+        let dom = document.getElementById("container"); // select container
+        let treeMap = echarts.init(dom); // initiate echarts object
+        treeMap.setOption({             // define type of visualization
+            series: [
+                {
+                    type: 'treemap', // visualization type
+                    data: d,     // data
+                    label: {        // show or hide labels
+                        show: true,
+                        formatter: '{b}'
+                    },
+                }
+            ]
+        },true);
+    });
+
+</script>
+</body>
+</html>
