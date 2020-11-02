@@ -5,23 +5,14 @@
     <script src="libs/echarts.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <title>
-        E Charts Tree Map
+        E charts TreeMap
     </title>
 </head>
 <body style="height: 100%; margin: 0">
 <div id="container" style="height: 100%"></div>
 <script type="text/javascript">
 
-    let d =[
-        {"parentColumn": "",  "childColumn":"A"},
-        {"parentColumn": "A", "childColumn":"B"},
-        {"parentColumn": "A", "childColumn":"C"},
-        {"parentColumn": "B", "childColumn":"D","val":30},
-        {"parentColumn": "B", "childColumn":"E","val":50},
-        {"parentColumn": "C", "childColumn":"F","val":20},
-        {"parentColumn": "C", "childColumn":"G","val":40},
-        {"parentColumn": "C", "childColumn":"H","val":60}
-    ].then( function (d) {
+    d3.json("../data/test.json").then(function (Data) {
 
         let dom = document.getElementById("container"); // select container
         let treeMap = echarts.init(dom); // initiate echarts object
@@ -29,7 +20,7 @@
             series: [
                 {
                     type: 'treemap', // visualization type
-                    data: d,     // data
+                    data: Data,     // data
                     label: {        // show or hide labels
                         show: true,
                         formatter: '{b}'
